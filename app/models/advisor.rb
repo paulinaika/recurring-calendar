@@ -14,6 +14,8 @@ class Advisor < ApplicationRecord
     end
   end
 
+
+
   def rule
     IceCube::Rule.from_hash recurring
   end
@@ -24,7 +26,7 @@ class Advisor < ApplicationRecord
     schedule
   end
 
-  def calendar(start)
+  def calendar_advisors(start)
     if recurring.empty?
       [self]
     else
