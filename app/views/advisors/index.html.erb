@@ -25,6 +25,7 @@
     <% @advisors.each do |advisor| %>
       <tr>
         <td><%= advisor.start_time %></td>
+        <td><%= advisor.end_time %></td>
         <td><%= advisor.recurring %></td>
         <td><%= link_to 'Show', advisor %></td>
         <td><%= link_to 'Edit', edit_advisor_path(advisor) %></td>

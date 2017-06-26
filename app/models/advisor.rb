@@ -3,7 +3,6 @@ class Advisor < ApplicationRecord
   has_many :bookings
   has_many :user, through: :bookings
 
-
   def recurring=(value)
     if value == "null"
       super(nil)
@@ -14,14 +13,12 @@ class Advisor < ApplicationRecord
     end
   end
 
-
-
   def rule
     IceCube::Rule.from_hash recurring
   end
 
   def schedule(start)
-    schedule = IceCube::Schedule.new(start)
+    schedule = IceCube::Schedule.new(start = Time.now, :end_time => start + 600)
     schedule.add_recurrence_rule(rule)
     schedule
   end
@@ -33,7 +30,7 @@ class Advisor < ApplicationRecord
       start_date = start.beginning_of_month.beginning_of_week
       end_date = start.end_of_month.end_of_week
       schedule(start_date).occurrences(end_date).map do |date|
-        Advisor.new(id: :id, name: name, start_time: date)
+        Advisor.new(id: :id, name: name, start_time: date, end_time: date)
     end
   end
 end
