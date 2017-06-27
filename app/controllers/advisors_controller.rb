@@ -6,12 +6,13 @@ class AdvisorsController < ApplicationController
   def index
     @advisors = Advisor.all
     @calendar_advisors = @advisors.flat_map{ |e| e.calendar_advisors(params.fetch(:start_date, Time.zone.now).to_date)}
-   
+
   end
 
   # GET /advisors/1
   # GET /advisors/1.json
   def show
+    # @advisor = Advisor.find(params[:id])
   end
 
   # GET /advisors/new
@@ -71,6 +72,6 @@ class AdvisorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advisor_params
-      params.require(:advisor).permit(:start_time, :recurring, :name)
+      params.require(:advisor).permit(:start_time, :end_time, :recurring, :name)
     end
 end

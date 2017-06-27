@@ -18,7 +18,7 @@ class Advisor < ApplicationRecord
   end
 
   def schedule(start)
-    schedule = IceCube::Schedule.new(start = Time.now, :end_time => start + 600)
+    schedule = IceCube::Schedule.new(start = Time.now, :end_time => start + 6)
     schedule.add_recurrence_rule(rule)
     schedule
   end
