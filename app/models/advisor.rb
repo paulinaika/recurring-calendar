@@ -18,7 +18,7 @@ class Advisor < ApplicationRecord
   end
 
   def schedule(start)
-    schedule = IceCube::Schedule.new(start = Time.now, :end_time => start + 6)
+    schedule = IceCube::Schedule.new(start)
     schedule.add_recurrence_rule(rule)
     schedule
   end
@@ -29,7 +29,7 @@ class Advisor < ApplicationRecord
     else
       start_date = start.beginning_of_month.beginning_of_week
       end_date = start.end_of_month.end_of_week
-      schedule(start_date).occurrences(end_date).map do |date|
+      schedule(start_time).occurrences(end_time).map do |date|
         Advisor.new(id: :id, name: name, start_time: date, end_time: date)
     end
   end
