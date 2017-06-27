@@ -1,21 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Booking Appointments</h1>
+<h1>Booking Appointments (Advisor Availability)</h1>
 
 <%=  month_calendar events: @calendar_advisors do |day, advisors| %>
-  <div><strong><%= day.to_s(:short) %></strong></div>
-<% advisors.each do |advisor| %>
-    <div>
-      <%= link_to advisor.name, advisor %>
-    </div>
-  <% end %>
+  <div><strong><%= day.strftime("%e") %></strong></div>
+    <% advisors.each do |advisor| %>
+      <div>
+        <%= link_to advisor.name, advisor %>
+      </br>
+        <%= advisor.start_time.strftime("%I:%M%p")%> to
+        <%= advisor.end_time.strftime("%I:%M%p")%>
+      </div>
+    <% end %>
 <% end %>
-
 
 <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Start date</th>
       <th>Start time</th>
+      <th>End date</th>
+      <th>End time</th>
       <th>Recurring</th>
       <th colspan="3"></th>
     </tr>
@@ -24,7 +30,11 @@
   <tbody>
     <% @advisors.each do |advisor| %>
       <tr>
-        <td><%= advisor.start_time %></td>
+        <td><%= advisor.name %></td>
+        <td><%= advisor.start_time.strftime("%d/%m/%Y") %></td>
+        <td><%= advisor.start_time.strftime("%I:%M%p") %></td>
+        <td><%= advisor.end_time.strftime("%d/%m/%Y") %></td>
+        <td><%= advisor.end_time.strftime("%I:%M%p")%></td>
         <td><%= advisor.recurring %></td>
         <td><%= link_to 'Show', advisor %></td>
         <td><%= link_to 'Edit', edit_advisor_path(advisor) %></td>
