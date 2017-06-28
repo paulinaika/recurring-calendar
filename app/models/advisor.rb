@@ -31,8 +31,7 @@ class Advisor < ApplicationRecord
       end_date = start.end_of_month.end_of_week
       schedule(start_time).occurrences(end_time).map do |date|
         Advisor.new(id: :id, name: name, start_time: date, end_time: date)
+      end
     end
   end
-end
-
 end
