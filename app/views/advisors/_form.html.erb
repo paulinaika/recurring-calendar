@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :advisor_start_time %>
+    <%= form.datetime_select :start_time, :minute_step => 15, id: :advisor_start_time %>
   </div>
 
   <div class="field">
     <%= form.label :end_time %>
-    <%= form.datetime_select :end_time, id: :advisor_end_time %>
+    <%= form.datetime_select :end_time, :minute_step => 15, id: :advisor_end_time %>
   </div>
 
   <div class="field">

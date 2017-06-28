@@ -32,7 +32,7 @@ class Advisor < ApplicationRecord
       # start_date = start.beginning_of_month.beginning_of_week
       # end_date = start.end_of_month.end_of_week
       schedule(start_time).occurrences(end_time).map do |date|
-        Advisor.new(id: :id, name: name, start_time: date, end_time: date)
+        Advisor.new(id: id, name: name, start_time: date, end_time: date, created_at: created_at, updated_at: updated_at )
       end
     end
   end
