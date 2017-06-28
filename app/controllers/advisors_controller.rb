@@ -5,14 +5,13 @@ class AdvisorsController < ApplicationController
   # GET /advisors.json
   def index
     @advisors = Advisor.all
-    @calendar_advisors = @advisors.flat_map{ |e| e.calendar_advisors(params.fetch(:start_date, Time.zone.now).to_date)}
-
+    @calendar_advisors = @advisors.flat_map{ |e| e.calendar_advisors(params.fetch(:start_time, Time.zone.now).to_date)}
   end
 
   # GET /advisors/1
   # GET /advisors/1.json
   def show
-    # @advisor = Advisor.find(params[:id])
+    @advisor = Advisor.find(params[:id])
   end
 
   # GET /advisors/new
@@ -22,6 +21,8 @@ class AdvisorsController < ApplicationController
 
   # GET /advisors/1/edit
   def edit
+     @advisor = Advisor.find(params[:id])
+
   end
 
   # POST /advisors
