@@ -34,8 +34,7 @@
     <% @advisors.each do |advisor| %>
       <tr>
         <td><%= advisor.name %></td>
-        <td><%= advisor.start_time %></td>
-        <!-- .strftime("%d/%m/%Y") -->
+        <td><%= advisor.start_time.strftime("%d/%m/%Y") %></td>
         <td><%= advisor.start_time.strftime("%I:%M%p") %></td>
         <td><%= advisor.end_time.strftime("%d/%m/%Y") %></td>
         <td><%= advisor.end_time.strftime("%I:%M%p")%></td>
