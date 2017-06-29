@@ -2,7 +2,7 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @advisor.start_time %>
+  <%= @time %>
 </p>
 
 <p>
@@ -10,5 +10,7 @@
   <%= @advisor.recurring %>
 </p>
 
+<%=	link_to 'Delete all schedule', advisor_path(@advisor), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete just this schedule', advisor_exceptions_path(@advisor, advisor_exception: {time: @time}), method: :post %>
 <%= link_to 'Edit', edit_advisor_path(@advisor) %> |
 <%= link_to 'Back', advisors_path %>

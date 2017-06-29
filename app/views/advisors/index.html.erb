@@ -7,9 +7,12 @@
     <% advisors.each do |advisor| %>
      <% puts advisor.inspect %>
       <div>
-        <%= link_to advisor.name, advisor_path(advisor.id) %>
+        <% if day >= Date.today %>
+        <%= link_to advisor.name, advisor_path(advisor.id, time: advisor.start_time) %>
         <%#= advisor.start_time.strftime("%I:%M%p")%>
         <%#= advisor.end_time.strftime("%I:%M%p")%>
+        <% else %>
+        <% end %>
       </div>
     <% end %>
 <% end %>

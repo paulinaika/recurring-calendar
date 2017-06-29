@@ -11,7 +11,14 @@ class AdvisorsController < ApplicationController
   # GET /advisors/1
   # GET /advisors/1.json
   def show
-    @advisor = Advisor.find(params[:id])
+    # @advisor = Advisor.find(params[:id])
+
+    # to render the time tht we passed in rather than the actual start time
+    begin
+      @time = Time.parse(params[:time])
+    rescue
+      @time = @advisor.start_time
+    end
   end
 
   # GET /advisors/new

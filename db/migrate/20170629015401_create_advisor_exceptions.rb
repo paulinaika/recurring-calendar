@@ -1,6 +1,6 @@
-class CreateScheduleExceptions < ActiveRecord::Migration[5.1]
+class CreateAdvisorExceptions < ActiveRecord::Migration[5.1]
   def change
-    create_table :schedule_exceptions do |t|
+    create_table :advisor_exceptions do |t|
       t.references :advisor, foreign_key: true
       t.datetime :time
 

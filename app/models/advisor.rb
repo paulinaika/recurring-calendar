@@ -1,6 +1,6 @@
 class Advisor < ApplicationRecord
   serialize :recurring, Hash
-  has_many :schedule_exceptions
+  has_many :advisor_exceptions, dependent: :destroy
 
   def recurring=(value)
     if value == "null"
@@ -19,7 +19,7 @@ class Advisor < ApplicationRecord
   def schedule(start)
     schedule = IceCube::Schedule.new(start)
     schedule.add_recurrence_rule(rule)
-    schedule_exceptions.each do |exception|
+    advisor_exceptions.each do |exception|
     schedule.add_exception_time(exception.time)
     end
     schedule
@@ -29,8 +29,8 @@ class Advisor < ApplicationRecord
     if recurring.empty?
       [self]
     else
-      # start_date = start.beginning_of_month.beginning_of_week
-      # end_date = start.end_of_month.end_of_week
+      start_date = start.beginning_of_month.beginning_of_week
+      end_date = start.end_of_month.end_of_week
       schedule(start_time).occurrences(end_time).map do |date|
         Advisor.new(id: id, name: name, start_time: date, end_time: date, created_at: created_at, updated_at: updated_at )
       end
