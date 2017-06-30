@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630014701) do
+ActiveRecord::Schema.define(version: 20170630030855) do
 
   create_table "advisor_exceptions", force: :cascade do |t|
     t.integer "advisor_id"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20170630014701) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.datetime "end_time"
+    t.integer "user_id"
+    t.integer "booking_id"
+    t.index ["booking_id"], name: "index_advisors_on_booking_id"
+    t.index ["user_id"], name: "index_advisors_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "advisor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advisor_id"], name: "index_bookings_on_advisor_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
