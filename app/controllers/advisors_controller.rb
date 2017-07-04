@@ -37,6 +37,7 @@ class AdvisorsController < ApplicationController
   def create
     @advisor = Advisor.new(advisor_params)
 
+
     respond_to do |format|
       if @advisor.save
         format.html { redirect_to @advisor, notice: 'Advisor was successfully created.' }

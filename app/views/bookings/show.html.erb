@@ -2,13 +2,13 @@
 
 <p>
   <strong>User:</strong>
-  <%= @booking.user %>
+  <%= @booking.user.email %>
 </p>
-
 <p>
   <strong>Advisor:</strong>
   <%= @booking.advisor.name %>
 </p>
+
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', bookings_path %>

@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :bookings do
-    resources :advisors
-    resources :bookings, only: [:index, :show, :new]
+  resources :bookings
+
+  resources :advisors do
+    resources :bookings, only: [:index, :show, :new, :create]
   end
 
   resources :users do
-    resources :bookings, only: [:index, :show, :new]
+    resources :bookings, only: [:index, :show, :new, :create]
   end
 
   resources :advisors do

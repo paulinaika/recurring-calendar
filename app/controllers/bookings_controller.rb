@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @booking = Booking.new
+    @booking = Booking.new(booking_params)
+    @booking.user_id = current_user.id
+    @booking.save
   end
 
   # GET /bookings/1/edit
@@ -26,7 +28,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    @booking.advisor_id = current_user.id
+    @booking.user_id = current_user.id
 
     # @booking.advisor_id = params[:advisor_id]
     # @advisor = Advisor.find(params[:id])
@@ -74,6 +76,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.permit(:advisor_id)
+      params.permit(:advisor_id, :user_id)
     end
 end

@@ -26,7 +26,7 @@
         <td><%= advisor.end_time.strftime("%d/%m/%Y") %></td>
         <td><%= advisor.end_time.strftime("%I:%M%p")%></td>
         <td><%= advisor.recurring %></td>
-        <td><%= link_to 'Book Here', new_booking_booking_path(advisor.id) %>
+        <td><%= link_to 'Book Here',new_advisor_booking_path(advisor.id) %>
         <td><%#= link_to 'Destroy', advisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
