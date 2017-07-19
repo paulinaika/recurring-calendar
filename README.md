@@ -1,24 +1,7 @@
-# README
+# Recurring Events Calendar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Calendar View
+![Calendar](http://res.cloudinary.com/dcbeoroxh/image/upload/v1500470215/portfolio/Screen_Shot_2017-07-19_at_10.57.07_pm.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+New event view for setting recurring events
+![recurring events](http://res.cloudinary.com/dcbeoroxh/image/upload/v1500470215/portfolio/Screen_Shot_2017-07-19_at_10.57.29_pm.png)
